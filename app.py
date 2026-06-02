@@ -747,13 +747,14 @@ st.markdown("""
      Seminário Integrador IV · Lucas do Rio Verde/MT · 2026</p>
   <div class="footer-team">
     <strong>Equipe:</strong>
-    Messias Kennedy &nbsp;·&nbsp;
-    <a href="https://www.instagram.com/srkennedydc/" target="_blank">Atlas Kennedy</a> <a href="https://www.instagram.com/angelicasantos.r/" target="_blank">Angélica Santos</a>
-    &nbsp;·&nbsp; Karleia &nbsp;·&nbsp; Viviane
+   <a href="https://www.instagram.com/srkennedydc/" target="_blank">Atlas Kennedy</a>  &nbsp;·&nbsp;
+     <a href="https://www.instagram.com/angelicasantos.r/" target="_blank">Angélica Santos</a>
+    &nbsp;·&nbsp; Karleia &nbsp;·&nbsp;<a href="https://www.instagram.com" target="_blank">Viviane Santos</a> Viviane
   </div>
   <p style="font-size:10px;opacity:.6;margin-top:6px">
     Atlas Brasileiro de Energia Solar, 2ª Ed. — INPE/LABREN (2017) · DOI: 10.34024/978851700089<br>
     CSV: global_horizontal_means.csv (LABREN/INPE) · Tarifa: ENERGISA-MT · CO₂: ONS 2023 · GNU GPL v3.0
+    LABREN (Laboratório de Modelagem e Estudos de Recursos Renováveis de Energia) / CCST (Centro de Ciência do Sistema Terrestre) / INPE (Intituto Nacional de Pesquisas Espaciais) – Brasil. DOI: 10.34024/978851700089 · Tarifa: ENERGISA-MT · Emissão CO₂: ONS 2023
   </p>
 </div>
 """, unsafe_allow_html=True)
