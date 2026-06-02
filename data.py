@@ -1,0 +1,28 @@
+"""data.py — Constantes e funções base — Atlas INPE/LABREN 2017"""
+import numpy as np
+
+LATITUDE  = -13.05; LONGITUDE = -55.91; ALTITUDE = 384
+CIDADE    = "Lucas do Rio Verde / MT"
+MESES     = ["Janeiro","Fevereiro","Março","Abril","Maio","Junho",
+             "Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"]
+DIAS_POR_MES = [31,28,31,30,31,30,31,31,30,31,30,31]
+
+# PR padrão Atlas (Fig.52, p.57) — sobrescrito pelo Fator Derate do usuário
+PERDA_INVERSOR=0.030; PERDA_CABEAMENTO=0.015; PERDA_SOMBREAMENTO=0.025
+PERDA_SUJEIRA=0.020;  MODULO_COEF_TEMP=-0.0035; TEMP_REFERENCIA=25; TEMP_OPERACAO_LOCAL=45
+PERDA_TEMPERATURA = abs(MODULO_COEF_TEMP)*(TEMP_OPERACAO_LOCAL-TEMP_REFERENCIA)
+FATOR_DESEMPENHO  = round(1-(PERDA_INVERSOR+PERDA_CABEAMENTO+PERDA_SOMBREAMENTO+
+                             PERDA_SUJEIRA+PERDA_TEMPERATURA),4)
+
+MODULO_POTENCIA_WP=550; MODULO_AREA_M2=2.56
+TARIFA_ENERGIA_KWH=0.87; INFLACAO_ENERGIA_AA=0.065; TAXA_DESCONTO=0.12
+VIDA_UTIL_ANOS=25; TAXA_DEPRECIACAO_AA=0.005; CUSTO_MANUTENCAO_AA=400.0
+FATOR_EMISSAO_CO2_KG_KWH=0.0884
+
+_KWP_PONTOS   = [1.0, 2.2,   4.4,   5.5,   8.25,  12.0,  20.0]
+_CUSTO_PONTOS = [4800,3955,  2864,  2673,  2448,  2200,  2000]
+
+def custo_por_kwp(kwp):
+    return float(np.interp(kwp, _KWP_PONTOS, _CUSTO_PONTOS))
+
+CUSTO_POR_KWP = 4500  # referência média
