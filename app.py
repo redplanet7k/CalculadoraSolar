@@ -748,7 +748,7 @@ st.markdown("""
   <div class="footer-team">
     <strong>Equipe:</strong>
     Messias Kennedy &nbsp;·&nbsp;
-    <a href="https://www.instagram.com/angelicasantos.r/" target="_blank">Angélica Santos</a>
+    <a href="https://www.instagram.com/srkennedydc/" target="_blank">Atlas Kennedy</a> <a href="https://www.instagram.com/angelicasantos.r/" target="_blank">Angélica Santos</a>
     &nbsp;·&nbsp; Karleia &nbsp;·&nbsp; Viviane
   </div>
   <p style="font-size:10px;opacity:.6;margin-top:6px">
