@@ -738,6 +738,47 @@ elif st.session_state.step == 3:
                  border:none;border-radius:8px;font-size:13px;font-weight:600;
                  cursor:pointer;min-height:44px;">🖨️ Imprimir / Salvar PDF</button>""",height=50)
 
+    # ── Banner de Feedback ───────────────────────────────────────────
+    st.markdown('''
+    <div style="
+      background:linear-gradient(135deg,#deeaf8 0%,#e8f5e9 100%);
+      border:1.5px solid #a8c8ee;
+      border-radius:14px;
+      padding:18px 22px;
+      margin-top:18px;
+      display:flex;
+      align-items:center;
+      gap:16px;
+      flex-wrap:wrap;
+    ">
+      <div style="font-size:28px">💬</div>
+      <div style="flex:1;min-width:200px">
+        <div style="font-size:14px;font-weight:700;color:#0d3d6e;margin-bottom:3px">
+          Gostou do resultado?
+        </div>
+        <div style="font-size:13px;color:#5a7099;line-height:1.5">
+          Nos ajude a melhorar deixando seu feedback — leva 1 minutinho 😊
+        </div>
+      </div>
+      <a href="https://forms.gle/Ym47U8RZSGnNT35n6" target="_blank"
+         style="
+           display:inline-block;
+           background:#1d6fbf;
+           color:#fff;
+           font-weight:700;
+           font-size:13px;
+           padding:11px 22px;
+           border-radius:8px;
+           text-decoration:none;
+           white-space:nowrap;
+           box-shadow:0 3px 10px rgba(29,111,191,0.25);
+           transition:opacity .15s;
+         ">
+        ✍️ Deixar feedback
+      </a>
+    </div>
+    ''', unsafe_allow_html=True)
+
 # ── Footer ──────────────────────────────────────────────────────────────────
 st.markdown("""
 <div class="footer">
@@ -746,16 +787,14 @@ st.markdown("""
      <strong style="color:#0d3d6e">UFMT — Universidade Federal de Mato Grosso</strong><br>
      Seminário Integrador IV · Lucas do Rio Verde/MT · 2026</p>
   <div class="footer-team">
-    <strong>Criado por:</strong>
-   <a href="https://www.instagram.com/srkennedydc/" target="_blank">Atlas Kennedy</a>  &nbsp;·&nbsp;
-    & coautoria por <a href="https://www.instagram.com/angelicasantos.r/" target="_blank">Angélica Santos</a>
-    &nbsp;·&nbsp; Karleia &nbsp;·&nbsp;<a href="https://www.instagram.com" target="_blank">Viviane Santos</a>
+    <strong>Equipe:</strong>
+    Messias Kennedy &nbsp;·&nbsp;
+    <a href="https://www.instagram.com/angelicasantos.r/" target="_blank">Angélica Santos</a>
+    &nbsp;·&nbsp; Karleia &nbsp;·&nbsp; Viviane
   </div>
-  <p>· Graduandos em Ciência e Tecnologia · UFMT — Universidade Federal de Mato Grosso </p>
   <p style="font-size:10px;opacity:.6;margin-top:6px">
     Atlas Brasileiro de Energia Solar, 2ª Ed. — INPE/LABREN (2017) · DOI: 10.34024/978851700089<br>
     CSV: global_horizontal_means.csv (LABREN/INPE) · Tarifa: ENERGISA-MT · CO₂: ONS 2023 · GNU GPL v3.0
-    LABREN (Laboratório de Modelagem e Estudos de Recursos Renováveis de Energia) / CCST (Centro de Ciência do Sistema Terrestre) / INPE (Intituto Nacional de Pesquisas Espaciais) – Brasil. DOI: 10.34024/978851700089 · Tarifa: ENERGISA-MT · Emissão CO₂: ONS 2023
   </p>
 </div>
 """, unsafe_allow_html=True)
