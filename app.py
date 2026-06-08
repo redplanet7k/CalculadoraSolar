@@ -23,8 +23,9 @@ from financial import (calcular_investimento, calcular_fluxo_caixa,
 st.set_page_config(page_title="SolarMT", page_icon="☀️",
                    layout="wide", initial_sidebar_state="collapsed")
 
-if "step" not in st.session_state: st.session_state.step = 1
-if "form" not in st.session_state: st.session_state.form = {}
+if "step" not in st.session_state:       st.session_state.step = 1
+if "form" not in st.session_state:       st.session_state.form = {}
+if "modal_fechado" not in st.session_state: st.session_state.modal_fechado = False
 
 # ── Paleta ──────────────────────────────────────────────────────────────────
 BG="#f0f5fb"; BG2="#ffffff"; BG3="#e4edf8"
@@ -185,6 +186,136 @@ st.markdown("""
   </div>
 </div>
 """, unsafe_allow_html=True)
+
+# ── Modal de boas-vindas (primeira visita) ──────────────────────────────────
+if not st.session_state.modal_fechado:
+    import streamlit.components.v1 as _comp_modal
+    _comp_modal.html("""
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    *{box-sizing:border-box;margin:0;padding:0;}
+    .overlay{
+      position:fixed;inset:0;
+      background:rgba(13,61,110,0.55);
+      backdrop-filter:blur(4px);
+      display:flex;align-items:center;justify-content:center;
+      z-index:99999;padding:16px;
+      animation:fadeIn .25s ease;
+    }
+    @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+    .modal{
+      background:#fff;border-radius:20px;
+      max-width:520px;width:100%;
+      box-shadow:0 24px 60px rgba(13,61,110,0.22);
+      overflow:hidden;
+      animation:slideUp .3s ease;
+    }
+    @keyframes slideUp{from{transform:translateY(30px);opacity:0}to{transform:translateY(0);opacity:1}}
+    .modal-header{
+      background:linear-gradient(135deg,#0d3d6e 0%,#1d6fbf 100%);
+      padding:28px 28px 22px;text-align:center;
+    }
+    .modal-icon{font-size:44px;margin-bottom:10px;}
+    .modal-title{color:#fff;font-family:'Inter',sans-serif;font-size:20px;font-weight:700;
+      line-height:1.2;margin-bottom:6px;}
+    .modal-sub{color:rgba(255,255,255,0.80);font-family:'Inter',sans-serif;font-size:13px;}
+    .modal-body{padding:24px 28px;}
+    .project-badge{
+      display:inline-flex;align-items:center;gap:8px;
+      background:#e4edf8;border:1.5px solid #a8c8ee;
+      border-radius:30px;padding:6px 14px;
+      font-family:'Inter',sans-serif;font-size:11px;font-weight:600;
+      color:#0d3d6e;margin-bottom:18px;
+    }
+    .desc{font-family:'Inter',sans-serif;font-size:14px;color:#334155;
+      line-height:1.7;margin-bottom:18px;}
+    .desc strong{color:#0d3d6e;}
+    .pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px;}
+    .pill{background:#f0f5fb;border:1px solid #c8d9ef;border-radius:20px;
+      padding:5px 13px;font-family:'Inter',sans-serif;font-size:11px;
+      color:#1d6fbf;font-weight:500;}
+    .team{background:#f8fbff;border-radius:10px;padding:12px 16px;
+      margin-bottom:22px;border:1px solid #deeaf8;}
+    .team-label{font-family:'Inter',sans-serif;font-size:10px;font-weight:600;
+      text-transform:uppercase;letter-spacing:.07em;color:#5a7099;margin-bottom:6px;}
+    .team-names{font-family:'Inter',sans-serif;font-size:13px;color:#1a2744;
+      font-weight:500;line-height:1.6;}
+    .btn-entrar{
+      width:100%;padding:14px;
+      background:linear-gradient(135deg,#1d6fbf,#0d3d6e);
+      color:#fff;border:none;border-radius:10px;
+      font-family:'Inter',sans-serif;font-size:15px;font-weight:700;
+      cursor:pointer;letter-spacing:.02em;
+      box-shadow:0 4px 16px rgba(29,111,191,0.35);
+      transition:opacity .15s,transform .15s;
+    }
+    .btn-entrar:hover{opacity:.9;transform:translateY(-1px);}
+    .modal-footer{text-align:center;padding:0 28px 20px;
+      font-family:'Inter',sans-serif;font-size:11px;color:#9ab0cc;}
+    .modal-footer a{color:#1d6fbf;text-decoration:none;font-weight:600;}
+    </style>
+
+    <div class="overlay" id="modal-overlay">
+      <div class="modal">
+        <div class="modal-header">
+          <div class="modal-icon">☀️</div>
+          <div class="modal-title">Bem-vindo ao SolarMT</div>
+          <div class="modal-sub">Calculadora de Viabilidade Solar Fotovoltaica</div>
+        </div>
+        <div class="modal-body">
+          <div style="text-align:center;margin-bottom:16px">
+            <span class="project-badge">
+              🎓 Projeto Acadêmico · BC&T · UFMT
+            </span>
+          </div>
+          <p class="desc">
+            Esta calculadora faz parte do <strong>Seminário Integrador IV</strong>
+            do curso de <strong>Bacharelado em Ciência e Tecnologia</strong> da
+            <strong>Universidade Federal de Mato Grosso (UFMT)</strong> —
+            campus de Lucas do Rio Verde/MT.
+          </p>
+          <p class="desc" style="margin-top:-8px">
+            Nosso objetivo é <strong>democratizar o acesso à informação</strong>
+            sobre energia solar fotovoltaica, permitindo que qualquer pessoa —
+            produtor rural, morador ou empresa — possa simular o custo,
+            a geração e o retorno de um sistema solar sem precisar contratar
+            uma consultoria especializada.
+          </p>
+          <div class="pills">
+            <span class="pill">⚡ Dados reais do Atlas INPE 2017</span>
+            <span class="pill">📍 141 municípios do MT</span>
+            <span class="pill">💰 Preços reais de mercado</span>
+            <span class="pill">🆓 100% gratuito</span>
+          </div>
+          <div class="team">
+            <div class="team-label">👥 Equipe de Desenvolvimento</div>
+            <div class="team-names">
+              Messias Kennedy · Angélica Santos · Karleia · Viviane
+            </div>
+          </div>
+          <button class="btn-entrar" onclick="
+            document.getElementById('modal-overlay').style.display='none';
+            window.parent.postMessage({type:'streamlit:setComponentValue',value:true},'*');
+          ">
+            ☀️ Começar simulação gratuita
+          </button>
+        </div>
+        <div class="modal-footer">
+          Dados: <a href="http://doi.org/10.34024/978851700089" target="_blank">Atlas INPE/LABREN 2017</a>
+          &nbsp;·&nbsp; Licença: GNU GPL v3.0
+        </div>
+      </div>
+    </div>
+    """, height=620)
+
+    # Botão Streamlit real para fechar o modal
+    col_m1, col_m2, col_m3 = st.columns([1,2,1])
+    with col_m2:
+        if st.button("☀️ Começar simulação gratuita", type="primary",
+                     use_container_width=True, key="btn_modal"):
+            st.session_state.modal_fechado = True
+            st.rerun()
+    st.stop()
 
 # ── Stepper ──────────────────────────────────────────────────────────────────
 def render_stepper(s):
@@ -787,16 +918,14 @@ st.markdown("""
      <strong style="color:#0d3d6e">UFMT — Universidade Federal de Mato Grosso</strong><br>
      Seminário Integrador IV · Lucas do Rio Verde/MT · 2026</p>
   <div class="footer-team">
-    <strong>Criado por:</strong>
-   <a href="https://www.instagram.com/srkennedydc/" target="_blank">Atlas Kennedy</a>  &nbsp;·&nbsp;
-    & coautoria por <a href="https://www.instagram.com/angelicasantos.r/" target="_blank">Angélica Santos</a>
-    &nbsp;·&nbsp; Karleia &nbsp;·&nbsp;<a href="https://www.instagram.com" target="_blank">Viviane Santos</a>
+    <strong>Equipe:</strong>
+    Messias Kennedy &nbsp;·&nbsp;
+    <a href="https://www.instagram.com/angelicasantos.r/" target="_blank">Angélica Santos</a>
+    &nbsp;·&nbsp; Karleia &nbsp;·&nbsp; Viviane
   </div>
-  <p>· Graduandos em Ciência e Tecnologia · UFMT — Universidade Federal de Mato Grosso </p>
   <p style="font-size:10px;opacity:.6;margin-top:6px">
     Atlas Brasileiro de Energia Solar, 2ª Ed. — INPE/LABREN (2017) · DOI: 10.34024/978851700089<br>
     CSV: global_horizontal_means.csv (LABREN/INPE) · Tarifa: ENERGISA-MT · CO₂: ONS 2023 · GNU GPL v3.0
-    LABREN (Laboratório de Modelagem e Estudos de Recursos Renováveis de Energia) / CCST (Centro de Ciência do Sistema Terrestre) / INPE (Intituto Nacional de Pesquisas Espaciais) – Brasil. DOI: 10.34024/978851700089 · Tarifa: ENERGISA-MT · Emissão CO₂: ONS 2023
   </p>
 </div>
 """, unsafe_allow_html=True)
