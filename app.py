@@ -284,20 +284,20 @@ if not st.session_state.modal_fechado:
           <div class="pills">
             <span class="pill">⚡ Dados reais do Atlas INPE 2017</span>
             <span class="pill">📍 141 municípios do MT</span>
-            <span class="pill">💰 Preços reais de mercado</span>
+            <span class="pill">💰 Preços proximos do valor encontrado no mercado</span>
             <span class="pill">🆓 100% gratuito</span>
           </div>
           <div class="team">
             <div class="team-label">👥 Equipe de Desenvolvimento</div>
             <div class="team-names">
-              Messias Kennedy · Angélica Santos · Karleia · Viviane
+              Messias Kennedy · Angélica Santos · Karleia Ferreira· Viviane Santos
             </div>
           </div>
           <button class="btn-entrar" onclick="
             document.getElementById('modal-overlay').style.display='none';
             window.parent.postMessage({type:'streamlit:setComponentValue',value:true},'*');
           ">
-            ☀️ Começar simulação gratuita
+            ☀️ Clique no botão abaixo para começar simulação gratuita!
           </button>
         </div>
         <div class="modal-footer">
