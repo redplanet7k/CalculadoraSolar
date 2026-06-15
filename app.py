@@ -574,7 +574,7 @@ elif st.session_state.step == 3:
     # ══════════════════════════════════════════════════════════════════
     # DASHBOARDS — 5 abas
     # ══════════════════════════════════════════════════════════════════
-    st.markdown('<div style="font-size:13px;font-weight:600;color:#5a7099;margin:20px 0 10px">📊 Dashboard de Análise</div>',
+    st.markdown('<div style="font-size:13px;font-weight:600;color:#5a7099;margin:20px 0 10px">📊 Geek? Leia o Dashboard de Análise</div>',
                 unsafe_allow_html=True)
 
     tab1,tab2,tab3,tab4,tab5 = st.tabs(["☀️ Geração vs Consumo","💸 Retorno Financeiro",
